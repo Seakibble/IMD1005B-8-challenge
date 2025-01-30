@@ -1,1 +1,1 @@
-# IMD1005B--8-challenge
+# IMD1005B-8-challenge
