@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Challenge!</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Oswald:wght@200..700&family=Share+Tech+Mono&display=swap');
+
+        body {
+            
+            background-color: #111;
+            color: #eee;
+            font-size: 20px;
+            font-family: 'Lato', sans-serif;
+
+            display: grid;
+            place-content: center;
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+
+        main {
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            font-family: 'Oswald', sans-serif;
+            text-align: center;
+            position: relative;
+
+            margin: 0 0 1em;
+        }
+        h1::after {
+            height: 2px;
+            background-color: orange;
+            content: '';
+            position: absolute;
+            left: 40%;
+            right: 40%;
+            bottom:-10px;
+        }
+
+        ul {
+            margin-top: 50px;
+        }
+
+        .grid {
+            display: grid;
+            place-content: center;
+        }
+
+        .wrapper {
+            background-color: rgba(255, 102, 0, 0.05);
+            border: 1px solid rgb(92, 24, 0);
+            padding: 20px;
+            border-radius: 10px;
+            transition: all 1s;
+        }
+
+        .wrapper.caution {
+            background: repeating-linear-gradient(
+                45deg,
+                black,
+                black 20px,
+                rgb(255, 165, 0, 0.15) 20px,
+                rgb(255, 165, 0, 0.15) 40px
+            );
+            text-shadow: 0 0 3px black;
+            background-size: 200% 100%;
+
+            animation: bg-scroll 5s ease-in-out infinite;
+        }
+        .wrapper.caution #timer {
+            color: rgb(255, 72, 0);
+        }
+
+        @keyframes bg-scroll {
+            0% {
+                background-position: -114px;
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                background-position: 0;
+                transform: scale(1);
+            }
+        }
+        #timer {
+            text-align: center;
+            color: orange;
+            margin: 0;
+            font-size: 1.8em;
+font-family: 'Share tech Mono';
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Practical Challenge!</h1>
+
+        <div class="grid">
+            <div class="wrapper">
+                <p id="timer"></p>
+            </div>
+        </div>
+
+        <ul>
+            <li>Create (or join) a group of 2-4.</li>
+            <li>Design a web page to hype an animal of your choice!</li>
+            <li>Make it as well styled as you are able</li>
+            <li>It must be responsive, make use of media queries to have it work at different screen sizes.</li>
+            <li>You have until 4:30pm</li>
+            <li>Email the project to me (leeminm@algonquincollege.com) as a repository link, or a zip file.</li>
+            <li>I will do my best to break your site!</li>
+        </ul>
+    </main>
+    
+    <script>
+        let $timer = document.getElementById('timer')
+        let interval = setInterval(()=>{
+            let time = Math.ceil((Date.parse('2025-01-30 16:30') - Date.now()) / 60000)
+
+            if (time < 15) {
+                $timer.parentElement.classList.add('caution')
+            }
+
+            if (time > 1) {
+                $timer.innerHTML = time
+                $timer.innerHTML += " minutes remain"
+            } else if (time == 1) {
+                $timer.innerHTML = time
+                $timer.innerHTML  += " minute left!"
+            } else {
+                $timer.innerHTML = "TIME IS UP!"
+                $timer.parentElement.classList.remove('caution')
+            }
+        }, 50)
+    </script>
+</body>
+</html>
